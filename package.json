@@ -1,0 +1,9 @@
+{
+  "name": "poi-vue-tpl",
+  "version": "0.0.1",
+  "description": "A template for create a vue component using [Poi](https://poi.js.org) and yoyo",
+  "dependencies": {
+    "camelcase": "^4.1.0"
+  },
+  "devDependencies": {}
+}

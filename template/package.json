@@ -1,0 +1,46 @@
+{
+  "name": "<%= name %>",
+  "version": "0.0.0",
+  "description": "<%= description %>",
+  "repository": {
+    "url": "fireyy/<%= name %>",
+    "type": "git"
+  },
+  "main": "dist/<%= name %>.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "npm run lint && echo 'no tests!'",
+    "lint": "xo",
+    "prepublishOnly": "npm run build",<% if (bili) { %>
+    "build": "bili --module-name <%= moduleName %> --format umd,umd-min",<% } %>
+    "example": "poi",
+    "build:example": "poi build",
+    "gh": "gh-pages -d example/dist",
+    "deploy": "npm run build:example && npm run gh"
+  },
+  "author": "fireyy <fireyy@gmail.com>",
+  "poi": {
+    "entry": "example/index.js",
+    "dist": "example/dist",
+    "homepage": "/"
+  },
+  "dependencies": {},
+  "devDependencies": {<% if (bili) { %>
+    "bili": "^0.19.0",<% } %>
+    "eslint-config-fireyy": "^0.0.1",
+    "gh-pages": "^1.0.0",
+    "poi": "^9.1.4",
+    "xo": "^0.18.0"
+  },
+  "xo": {
+    "extends": "fireyy/prettier",
+    "envs": [
+      "browser"
+    ],
+    "ignores": [
+      "example/**"
+    ]
+  }
+}
